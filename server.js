@@ -19,12 +19,20 @@ server.post('/videos', (req, res) => {
     }
   )
 
-  console.log(database.list())
   return res.status(201).send()
 })
 
-server.put('/videos/:id', () => {
-  return "Hello World"
+server.put('/videos/:id', (req, res) => {
+  const videoId = req.params.id
+  const { title, description, duration } = req.body
+
+  database.update(videoId, {
+    title,
+    description,
+    duration
+  })
+
+  return res.status(204).send()
 })
 
 server.delete('/videos/:id', () => {
