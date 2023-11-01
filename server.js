@@ -1,9 +1,23 @@
-import { createServer } from 'node:http'
+import { fastify } from 'fastify'
 
-const server = createServer((req, res) => {
-  res.write("Hello World")
+const server = fastify()
 
-  return res.end()
+server.get('/', () => {
+  return "Hello World"
 })
 
-server.listen(3333)
+server.post('/videos', () => {
+  return "Hello World"
+})
+
+server.put('/videos/:id', () => {
+  return "Hello World"
+})
+
+server.delete('/videos/:id', () => {
+  return "Hello World"
+})
+
+server.listen({
+  port: 3333
+})
