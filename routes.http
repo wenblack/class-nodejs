@@ -11,12 +11,15 @@ Content-Type:  application/json
 GET http://localhost:3333/videos
 ###
 
-PUT http://localhost:3333/videos
+PUT http://localhost:3333/videos/a2892f16-5ffe-4df6-b9f9-35ab84586b8b
 Content-Type:  application/json
 
   {
-      "title": "Video 01",
-      "description": "This is a static data example, for testing porpouse",
+      "title": "Video 02",
+      "description": "This is a update example, for testing porpouse",
       "duration": 180
     }
+###
+
+DELETE  http://localhost:3333/videos/a2892f16-5ffe-4df6-b9f9-35ab84586b8b
 ###
