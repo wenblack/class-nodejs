@@ -1,8 +1,9 @@
 import { fastify } from 'fastify'
+import { DatabaseMemory } from './database/memory.js'
 
 const server = fastify()
 
-server.get('/', () => {
+server.get('/videos', () => {
   return "Hello World"
 })
 
