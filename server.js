@@ -2,13 +2,25 @@ import { fastify } from 'fastify'
 import { DatabaseMemory } from './database/memory.js'
 
 const server = fastify()
+const database = new DatabaseMemory()
 
-server.get('/videos', () => {
-  return "Hello World"
+server.get('/videos', (req, res) => {
+  const videos = database.list()
+  return videos
 })
 
-server.post('/videos', () => {
-  return "Hello World"
+server.post('/videos', (req, res) => {
+  const { title, description, duration } = req.body
+  database.create(
+    {
+      title,
+      description,
+      duration
+    }
+  )
+
+  console.log(database.list())
+  return res.status(201).send()
 })
 
 server.put('/videos/:id', () => {
